@@ -1,0 +1,9 @@
+.box {
+    background-color: pink;
+    width: 50%;
+    height: 400px;
+}
+.log {
+    font-size: 50px;
+    z-index: 1;
+}
