@@ -1,0 +1,26 @@
+.buttonBtn {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+.img__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.box img {
+    /* justify-content: center; */
+    width: 100px;
+    height: 100px;
+    margin: 1px;
+}
+.findBtn {
+    border-radius: 4px;
+    background-color: thistle;
+    border: 1px white solid;
+    padding: 5px 20px;
+}
+
+body {
+    background-color: black;
+}
