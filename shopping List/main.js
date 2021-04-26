@@ -1,37 +1,93 @@
+'use strict';
+
 const formBox = document.querySelector('#form');
 const inputText = document.querySelector('.input-text');
-const formTest = document.querySelector('.form-test');
 const listBox = document.querySelector('.item-list');
 const addBtn = document.querySelector('.add-btn');
+const ollist = document.querySelector('.content');
+const submit = document.querySelector('.submit');
+const textBox = document.querySelector('.text-box');
+let icons = document.querySelector('.fa-trash-alt');
+let ListAll = document.querySelectorAll('.box');
+let contentText;
 
-function creatTag(){
-    return;
+
+
+function creatList(text){
+    const newLitag = document.createElement("li");
+    const newDivListTag = document.createElement("div");
+    const newDivIconTag = document.createElement("div");
+    const newContent = document.createTextNode(text);
+    const newIcon = document.createElement("i");
+
+    ollist.appendChild(newLitag);
+    newLitag.appendChild(newDivListTag);
+    newLitag.appendChild(newDivIconTag);
+    newDivIconTag.appendChild(newIcon);
+    newDivListTag.appendChild(newContent);
+
+    newLitag.classList.add('box');
+    newDivListTag.classList.add('item');
+    newDivIconTag.classList.add('icon');
+    newIcon.classList.add('fas');
+    newIcon.classList.add('fa-trash-alt');
+
+};
+function enterbtn(){
+    const string = "Enter";
+    return string;
 };
 
-console.log(formTest);
 
-inputText.addEventListener('keydown', (event) => {
-    const keyTarget = event.key;
-    let keyValue = event.target.value;
-    if(keyTarget===null){
+textBox.addEventListener('keydown', (eventText) => {
+    const keyTarget = eventText.key;
+    const textValue = eventText.target.value;
+    console.log(enterbtn());
+    if(keyTarget==="Enter"){
+        if(textValue === ""){
+            return;
+        }
+        else{
+            inputText.value = null;
+            creatList(textValue);  
+            contentText = textValue;
+        }
+    }
+});
+
+textBox.addEventListener('click', (eventText) => {
+    const keyTarget = eventText.key;
+    const textValue = eventText.target.value;
+    const target = document.querySelectorAll('eventText.target.path');
+    console.log(target);
+    // if(keyTarget==="Enter"){
+    //     if(textValue === ""){
+    //         return;
+    //     }
+    //     else{
+    //         inputText.value = null;
+    //         creatList(textValue);  
+    //         contentText = textValue;
+    //     }
+    // }
+});
+
+
+console.log(submit);
+
+ollist.addEventListener('click', (event) => {
+
+    const target = event.target.className;
+    const node = event.target.parentNode;
+    
+    // console.log(node.parentNode);
+
+    if(target === 'fas fa-trash-alt'){
+        node.parentNode.remove();
+    }
+    else{
         return;
     }
-    if(keyTarget==="Enter"){
-        console.log(keyValue);
-        creatTag();
-        inputText.value = "";
-    }
 });
 
-addBtn.addEventListener('click', (event) => {
-    const keyTarget = event;
-    console.log(keyTarget)
-    // if(keyTarget===null){
-    //     return;
-    // }
-    // if(keyTarget==="Enter"){
-    //     console.log(keyValue);
-    //     creatTag();
-    //     inputText.value = "";
-    // }
-});
+
