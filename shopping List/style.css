@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+h1 {
+    margin: 0;
+}
+.main-container {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    height: 30rem;
+    margin: auto;
+    padding: 0;
+    border-radius: 10px;
+    background: rgb(238, 174, 202);
+    background: linear-gradient(
+        128deg,
+        rgba(238, 174, 202, 1) 21%,
+        rgba(148, 187, 233, 1) 87%
+    );
+}
+.main-title {
+    padding: 10px 0px;
+
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+    color: white;
+}
+.item-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+}
+.items {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    font-size: 20px;
+}
+.item-list {
+    cursor: default;
+    margin-left: 10px;
+}
+.icon {
+    cursor: pointer;
+    transition: all 300ms ease-in;
+    margin-right: 10px;
+}
+.icon:hover {
+    cursor: pointer;
+    transform: scale(1.2, 1.2) rotate(-30deg);
+    color: red;
+}
+.text-box {
+    width: 20rem;
+}
+.input-text {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30px;
+}
+.add-box {
+    padding: 5px 0;
+}
+button {
+    width: 100%;
+    font-size: 40px;
+    background-color: transparent;
+    border: 0;
+    outline: 0; /*포커스시 아웃라인 제거*/
+    cursor: pointer;
+}
