@@ -1,93 +1,63 @@
-'use strict';
+const items = document.querySelector('.content');
+const input = document.querySelector('.input__text');
+const addBtn = document.querySelector('.footer__btn');
 
-const formBox = document.querySelector('#form');
-const inputText = document.querySelector('.input-text');
-const listBox = document.querySelector('.item-list');
-const addBtn = document.querySelector('.add-btn');
-const ollist = document.querySelector('.content');
-const submit = document.querySelector('.submit');
-const textBox = document.querySelector('.text-box');
-let icons = document.querySelector('.fa-trash-alt');
-let ListAll = document.querySelectorAll('.box');
-let contentText;
-
-
-
-function creatList(text){
-    const newLitag = document.createElement("li");
-    const newDivListTag = document.createElement("div");
-    const newDivIconTag = document.createElement("div");
-    const newContent = document.createTextNode(text);
-    const newIcon = document.createElement("i");
-
-    ollist.appendChild(newLitag);
-    newLitag.appendChild(newDivListTag);
-    newLitag.appendChild(newDivIconTag);
-    newDivIconTag.appendChild(newIcon);
-    newDivListTag.appendChild(newContent);
-
-    newLitag.classList.add('box');
-    newDivListTag.classList.add('item');
-    newDivIconTag.classList.add('icon');
-    newIcon.classList.add('fas');
-    newIcon.classList.add('fa-trash-alt');
-
-};
-function enterbtn(){
-    const string = "Enter";
-    return string;
-};
-
-
-textBox.addEventListener('keydown', (eventText) => {
-    const keyTarget = eventText.key;
-    const textValue = eventText.target.value;
-    console.log(enterbtn());
-    if(keyTarget==="Enter"){
-        if(textValue === ""){
-            return;
-        }
-        else{
-            inputText.value = null;
-            creatList(textValue);  
-            contentText = textValue;
-        }
+function onAdd() {
+    //1. 사용자가 입력한 텍스트를 받아옴
+    const text = input.value;
+    console.log(text);
+     //2. 새로운 아이템을 만듬(텍스트 + 삭제버튼)
+    if(text === ''){
+        input.focus();
+        return;
     }
+    const item = createItem(text);
+    //3. items 컨테이너안에 새로 만든 아이템을 추가한다.
+    items.appendChild(item);
+    item.scrollIntoView({block: 'center'});
+    //4.인풋을 초기화 한다.
+    input.value = '';
+    input.focus();
+}
+function createItem(text) {
+    const itemRow = document.createElement('li');
+    itemRow.setAttribute('class', 'item__row');
+
+    const item = document.createElement('div');
+    item.setAttribute('class', 'item');
+
+    const itemName = document.createElement('span');
+    itemName.setAttribute('class', 'item__name');
+    itemName.innerText = text;
+
+    const itemDelete = document.createElement('button');
+    itemDelete.setAttribute('class', 'item__delete');
+    itemDelete.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    itemDelete.addEventListener('click', () =>{
+        items.removeChild(itemRow);
+    });
+
+    const itemDivider = document.createElement('div');
+    itemDivider.setAttribute('class', 'item__divider');
+
+    item.appendChild(itemName);
+    item.appendChild(itemDelete);
+    itemRow.appendChild(item);
+    itemRow.appendChild(itemDivider);
+
+    return itemRow;
+}
+addBtn.addEventListener('click', () => {
+    onAdd();
 });
 
-textBox.addEventListener('click', (eventText) => {
-    const keyTarget = eventText.key;
-    const textValue = eventText.target.value;
-    const target = document.querySelectorAll('eventText.target.path');
-    console.log(target);
-    // if(keyTarget==="Enter"){
-    //     if(textValue === ""){
-    //         return;
-    //     }
-    //     else{
-    //         inputText.value = null;
-    //         creatList(textValue);  
-    //         contentText = textValue;
-    //     }
-    // }
-});
-
-
-console.log(submit);
-
-ollist.addEventListener('click', (event) => {
-
-    const target = event.target.className;
-    const node = event.target.parentNode;
-    
-    // console.log(node.parentNode);
-
-    if(target === 'fas fa-trash-alt'){
-        node.parentNode.remove();
+input.addEventListener('keydown', (envet) => {
+    const keyEnter = envet.key;
+    console.log(keyEnter);
+    if(keyEnter === 'Enter'){
+        onAdd();
     }
     else{
         return;
     }
 });
-
-
