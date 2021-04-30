@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+.main__container {
+    background: url("../img/background.png") no-repeat center/cover;
+    width: 100%;
+    height: 1200px;
+}
+.buttons__container {
+    display: flex;
+    flex-direction: column;
+    font-size: 80px;
+    align-items: center;
+}
+.active {
+    display: none;
+}
+.start__btn,
+.stop__btn {
+    font-size: 80px;
+    width: 200px;
+    border-radius: 20px;
+    margin-top: 50px;
+    outline: none;
+    cursor: pointer;
+}
+.timer__box {
+    border: 4px solid black;
+    border-radius: 20px;
+    text-align: center;
+    background-color: whitesmoke;
+    width: 300px;
+}
+.count__box {
+    border: 1px solid black;
+    text-align: center;
+    background-color: orange;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 5px 0;
+}
+.stage__container {
+    position: relative;
+    /* border: 1px solid black; */
+    height: 600px;
+    top: 250px;
+}
+.bug,
+.carrot {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
