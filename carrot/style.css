@@ -21,23 +21,19 @@
     width: 200px;
     border-radius: 20px;
     margin-top: 50px;
-    background-color: palegoldenrod;
     outline: none;
     cursor: pointer;
-    border: 10px solid black;
 }
 .timer__box {
-    border: 10px solid black;
+    border: 4px solid black;
     border-radius: 20px;
     text-align: center;
     background-color: whitesmoke;
     width: 300px;
-    margin: 20px 0;
 }
 .count__box {
-    border: 8px solid black;
+    border: 1px solid black;
     text-align: center;
-    font-size: 70px;
     background-color: orange;
     border-radius: 50%;
     width: 100px;
@@ -46,11 +42,9 @@
 }
 .stage__container {
     position: relative;
-    display: flex;
-    justify-content: center;
     /* border: 1px solid black; */
     height: 600px;
-    top: 160px;
+    top: 250px;
 }
 .bug,
 .carrot {
@@ -58,39 +52,4 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    z-index: 1;
-}
-.restart__box {
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    left: 38%;
-    top: 50%;
-    width: 600px;
-    height: 300px;
-    border-radius: 30px;
-    /* border: 1px solid black; */
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-.restart__box.active {
-    display: none;
-}
-.restart__btn {
-    border-radius: 30px;
-    font-size: 50px;
-    width: 100px;
-    height: 100px;
-    border: 5px solid black;
-    margin-bottom: 20px;
-    cursor: pointer;
-    outline: none;
-}
-.result__box {
-    margin-top: 20px;
-    font-size: 40px;
-    opacity: 1;
-    color: white;
 }
