@@ -2,10 +2,52 @@ const startBtn = document.querySelector('.start__btn');
 const stopBtn = document.querySelector('.stop__btn');
 const timerBox = document.querySelector('.timer__box');
 const stage = document.querySelector('.stage__container');
+const countBox = document.querySelector('.count__box');
 const screenyMax = 500; 
 const screenyMin = 0; 
 const screenxMax = window.screen.width-100;
 const screenxMin = 0; 
+let mainCount = 10;
+
+function stopBtnEvent (timeId){
+    stopBtn.addEventListener('click', ()=>{
+        clearInterval(timeId);
+        bugs.forEach(entry =>{
+            entry.remove();
+        });
+        carrots.forEach(entry =>{
+            entry.remove();
+        });
+        stopBtn.classList.add('active');
+        startBtn.classList.remove('active');
+        timerBox.textContent = `00:10`;
+    });
+};
+function carrotBtnEvent(timeId){
+    stage.addEventListener('click', (event) => {
+        const name = event.target.className;
+        const id = event.target.dataset.id
+        
+        console.log(event.target);
+        if(name === 'bug'){
+            console.log("bug");
+        }
+        else if(name === 'carrot'){
+            console.log("carrot");
+            const toBeDeleted = document.querySelector(`.carrot[data-id="${id}"]`);
+            toBeDeleted.remove();
+            mainCount--;
+            countBox.textContent = mainCount
+            console.log(mainCount);
+            if(mainCount === 0){
+                clearInterval(timeId);
+            }
+        }
+        else{
+            return;
+        }
+    });
+};
 
 function countDownTimer(){
     let time = 9;
@@ -20,18 +62,8 @@ function countDownTimer(){
         else{
             time--;   
         }
-        stopBtn.addEventListener('click', ()=>{
-            clearInterval(timeId);
-            bugs.forEach(entry =>{
-                entry.remove();
-            });
-            carrots.forEach(entry =>{
-                entry.remove();
-            });
-            stopBtn.classList.add('active');
-            startBtn.classList.remove('active');
-            timerBox.textContent = `00:10`;
-        });
+        stopBtnEvent(timeId);
+        carrotBtnEvent(timeId);
     }, 1000);
 
 };
@@ -39,7 +71,7 @@ function getRandomInt(max, min) {
     const minpx = Math.ceil(min);
     const maxpx = Math.floor(max);
     const randomNumber = Math.floor(Math.random() * (maxpx - minpx) + minpx);
-    console.log(randomNumber);
+    // console.log(randomNumber);
     return randomNumber;
 };
 function creatImg (className, scrName){
@@ -66,19 +98,3 @@ startBtn.addEventListener('click', (event) =>{
     countDownTimer();
 });
 
-stage.addEventListener('click', (event) => {
-    const name = event.target.className;
-    const id = event.target.dataset.id
-    console.log(event.target);
-    if(name === 'bug'){
-        console.log("bug");
-    }
-    else if(name === 'carrot'){
-        console.log("carrot");
-        const toBeDeleted = document.querySelector(`.carrot[data-id="${id}"]`);
-        toBeDeleted.remove();
-    }
-    else{
-        return;
-    }
-});
