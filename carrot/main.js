@@ -1,3 +1,5 @@
+'user stactic'
+
 const startBtn = document.querySelector('.start__btn');
 const stopBtn = document.querySelector('.stop__btn');
 const timerBox = document.querySelector('.timer__box');
@@ -9,19 +11,11 @@ const resultText= document.querySelector('.result__text');
 const btnBox = document.querySelector('.buttons__container');
 
 
-const backgrundBgm = new Audio("../sound/bg.mp3");
-const alertBgm = new Audio('/sound/alert.wav');
-const bugBgm = new Audio('/sound/bug_pull.mp3');
-const carrotBgm = new Audio('/sound/carrot_pull.mp3');
-const winBgm = new Audio('/sound/game_win.mp3');
-// backgrundBgm.play();
-// document.addEventListener('canplaythrough', (event) => {
-//     // backgrundBgm.play();
-//     // alertBgm.play();
-//     // bugBgm.play();
-//     // carrotBgm.play();
-//     // winBgm.play();
-// });
+const backgrundBgm = new Audio("./sound/bg.mp3");
+const alertBgm = new Audio('./sound/alert.wav');
+const bugBgm = new Audio('./sound/bug_pull.mp3');
+const carrotBgm = new Audio('./sound/carrot_pull.mp3');
+const winBgm = new Audio('.å/sound/game_win.mp3');
 
 // start value  
 const screenyMax = 500; 
@@ -31,12 +25,13 @@ const screenxMin = 0;
 let timerId = 0; //setinterval Id
 let mainCount = 10;
 timerBox.textContent = `00:10`;
+const timeMax = 10;
 
 
 function timerCounter(){
-    let time = 9;
+    let time = timeMax;
+    updateTimerText(time);
     const timeID = setInterval(() => {
-        timerBox.textContent = `00:0${time}`;
         if(time <= 0){
             alertBgm.play();
             backgrundBgm.pause();
@@ -49,19 +44,25 @@ function timerCounter(){
             restartBtn.focus();
         }
         else{
-            time--;   
+            updateTimerText(--time);
         }
     }, 1000);
     return timeID;
 };
+function updateTimerText(time){
+    const minutes = Math.floor(time/ 60);
+    const seconds = (time % 60);
+    timerBox.textContent = `${minutes}:${seconds}`;
+};
+
 function getRandomInt(max, min) {
     const minpx = Math.ceil(min);
     const maxpx = Math.floor(max);
     const randomNumber = Math.floor(Math.random() * (maxpx - minpx) + minpx);
     return randomNumber;
 };
-function creatImg (className, scrName){
-    for(i=0 ; i<10 ; i++){
+function creatImg (className, count ,scrName){
+    for(i=0 ; i<count ; i++){
         let x, y;
         const elm = document.createElement('img');
         elm.setAttribute("class", `${className}`);
@@ -84,25 +85,15 @@ function removeImg(){
         entry.remove();
     });
 };
-function removeImgBug(){
-    const bugs = document.querySelectorAll('.bug');
-    bugs.forEach(entry =>{
-        entry.remove();
-    });
-};
-function removeImgCarrot(){
-    const carrots = document.querySelectorAll('.carrot');
-    carrots.forEach(entry =>{
-        entry.remove();
-    });
-};
+
+
 startBtn.addEventListener('click', (event) =>{
     mainCount = 10;
     countBox.textContent = mainCount;
     startBtn.classList.add('active');
     stopBtn.classList.remove('active');
-    creatImg("bug", "/img/bug.png");
-    creatImg("carrot", "/img/carrot.png");
+    creatImg("bug", mainCount, "/img/bug.png");
+    creatImg("carrot", mainCount, "/img/carrot.png");
     timerId = timerCounter();
     console.log(timerId);
     backgrundBgm.play();

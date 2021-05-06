@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    text-align: center;
+}
+button {
+    outline: none;
+    font-size: 50px;
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: peachpuff;
+    cursor: pointer;
+    border: 5px solid black;
+}
+.game {
+    background: url("img/background.png") center no-repeat;
+    background-size: cover;
+    width: 1440px;
+    height: 810px;
+    display: flex;
+    flex-direction: column;
+}
+.console {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+.game__button {
+    margin-bottom: 20px;
+    transition: all 200ms ease-in;
+}
+.game__button:hover {
+    transform: scale(1.1);
+    background-color: papayawhip;
+}
+.game__timer {
+    border: 10px solid black;
+    font-size: 60px;
+    padding: 5px 5px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    cursor: default;
+    user-select: none;
+    visibility: hidden;
+}
+.game__score {
+    /* border: 5px solid orange; */
+    background-color: orange;
+    font-size: 50px;
+    padding: 8px 8px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-weight: bold;
+    color: white;
+    cursor: default;
+    user-select: none;
+    visibility: hidden;
+}
+.game__field {
+    display: block;
+    position: relative;
+    border: 1px solid white;
+    height: 100%;
+    width: 100%;
+    margin-top: 80px;
+}
+.pop-up {
+    border: 5px solid white;
+    border-radius: 30px;
+    width: 600px;
+    height: 300px;
+    transform: translate(70%, -150%);
+    background-color: #00000070;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 30px;
+}
+.pop-up.pop-up--hide {
+    display: none;
+}
+.pop-up__refresh {
+    margin-bottom: 50px;
+    transition: all 200ms ease-in;
+}
+.pop-up__refresh:hover {
+    transform: scale(1.1);
+    background-color: papayawhip;
+}
+.pop-up__message {
+    font-size: 50px;
+    font-weight: bold;
+}
+.bug:hover,
+.carrot:hover {
+    transform: scale(1.3);
+}
