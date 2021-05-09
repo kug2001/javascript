@@ -65,7 +65,7 @@ button {
 .game__field {
     display: block;
     position: relative;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     height: 100%;
     width: 100%;
     margin-top: 80px;
