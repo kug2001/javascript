@@ -1,6 +1,11 @@
 'use strict';
 
-export default class Field{
+export const Item = Object.freeze({
+    carrot : 'carrot',
+    bug : 'bug',
+});
+
+export class Field{
     constructor(carrotCount, bugCount){
         this.carrotCount = carrotCount;
         this.bugCount = bugCount;
@@ -15,8 +20,8 @@ export default class Field{
     }
     init() {
         this.field.innerHTML = '';
-        this._addItem('carrot', this.carrotCount, this.CARROT_SRC);
-        this._addItem('bug', this.bugCount, this.BUG_SRC);
+        this._addItem(Item.carrot, this.carrotCount, this.CARROT_SRC);
+        this._addItem(Item.bug, this.bugCount, this.BUG_SRC);
     }
     setClickListener(onClick){
         this.onClick = onClick;
@@ -41,18 +46,4 @@ export default class Field{
             this.field.appendChild(item);
         }
     }
-    setOnClick(event){ 
-        const target = event.target;
-        if(target.matches('.carrot')){
-            target.remove();
-            this.onItmeClick && this.onItmeClick('carrot');
-        } 
-        else if(target.matches('.bug')){
-            FinishGame(false);
-            stopGameTimer();
-            this.onItmeClick && this.onItmeClick('bug');
-        }
-    }
-    
-    
 }
